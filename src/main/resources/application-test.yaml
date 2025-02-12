@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: order_api
+  datasource:
+    url: jdbc:h2:mem:gestaopedidos
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.H2Dialect
+  h2:
+    console:
+      enabled: true
+# OpenApi
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    operationsSorter: method
+    tagsSorter: alpha
+  version: v1
+  show-actuator: false
+

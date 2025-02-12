@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gestaopedidos-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gestaopedidos
+  template:
+    metadata:
+      labels:
+        app: gestaopedidos
+    spec:
+      containers:
+        - name: gestaopedidos
+          image: gestaopedidos:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_HOST
+              value: db-service
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_NAME
+              value: gestaopedidos
+            - name: DB_USER
+              value: postgres
+            - name: DB_PASSWORD
+              value: secret
+            - name: PAYMENT_NAME
+              value: Payment-Api
+            - name: PAYMENT_URL
+              value: https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1
+          resources:
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "200m"

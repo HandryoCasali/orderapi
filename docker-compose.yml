@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+  gestaopedidos:
+    image: api_pedidos
+    build: .
+    depends_on:
+      - db
+    ports:
+      - 8080:8080
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: gestaopedidos
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      PAYMENT_NAME: Payment-Api
+      PAYMENT_URL: https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1
+    healthcheck:
+      test: [ "CMD-SHELL", "sh -c 'pg_isready -U postgres -d gestaopedidos'" ]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  db:
+    image: 'postgres:14.1-alpine'
+    container_name: pg-db-gestaopedidos
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: gestaopedidos
+    ports:
+      - '5433:5432'
+
