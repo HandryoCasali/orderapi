@@ -161,8 +161,7 @@
                                         <format>XML</format>
                                     </formats>
                                     <excludes>
-                                        <exclude>**/infrastructure/**</exclude>
-                                        <exclude>**/dto/**</exclude>
+                                        <exclude>br/com/postech/techchallenge/orderapi/infrastructure/**</exclude>
                                     </excludes>
                                 </configuration>
                             </execution>
