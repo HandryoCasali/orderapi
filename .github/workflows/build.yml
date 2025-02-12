@@ -33,7 +33,14 @@ jobs:
         run: |
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -Pcoverage \
-          -Dsonar.token=$SONAR_TOKEN \
-          -Dsonar.projectProperties=src/main/resources/sonar.properties \
+          -Dsonar.login=$SONAR_TOKEN \
+          -Dsonar.projectKey=HandryoCasali_orderapi \
+          -Dsonar.organization=handryocasali \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.sourceEncoding=UTF-8 \
+          -Dsonar.java.binaries=target/classes \
+          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
+          -Dsonar.coverage.exclusions=**/infrastructure/**,**/dto/**,**/config/** \
+          -Dsonar.exclusions=**/*.json,**/*.xml \
           -Dsonar.qualitygate.wait=true \
           -Dactive.profile=test
