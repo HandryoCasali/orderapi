@@ -146,7 +146,8 @@
                         <version>0.8.8</version>
                         <configuration>
                             <excludes>
-                                <exclude>br/com/postech/techchallenge/orderapi/infrastructure/**</exclude>
+                                <exclude>**/infrastructure/**</exclude>
+                                <exclude>**/dto/**</exclude>
                             </excludes>
                         </configuration>
                         <executions>
