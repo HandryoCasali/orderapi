@@ -33,6 +33,11 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
-          -Dsonar.coverage.jacoco.xmlReportPaths= ../app-it/target/site/jacoco-aggregate/jacoco.xml sonar:sonar -Pcoverage \
-          --file pom.xml -Dactive.profile=test
+        run: |
+          mvn -B clean verify jacoco:report -Pcoverage
+          mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+            -Dsonar.projectKey=HandryoCasali_orderapi \
+            -Dsonar.organization=handryocasali \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+  
