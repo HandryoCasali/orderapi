@@ -36,6 +36,5 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -Dsonar.projectKey=HandryoCasali_orderapi \
           -Dsonar.organization=handryocasali \
-          -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
           --file pom.xml -Dactive.profile=test
