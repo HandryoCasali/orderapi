@@ -20,9 +20,12 @@ jobs:
           java-version: 17
           distribution: 'zulu' # Alternative distribution options are available.
       - name: Build Project
-        run: mvn clean install -DskipTests -Dspring.profiles.active=test
+        run: mvn clean verify -Pcoverage -Dspring.profiles.active=test
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: 'https://sonarcloud.io'
+        with:
+          args: >
+            -Dsonar.qualitygate.wait=true
