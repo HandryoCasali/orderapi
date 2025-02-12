@@ -22,6 +22,7 @@
         <sonar.coverage.jacoco.xmlReportPaths>
             ../app-it/target/site/jacoco-aggregate/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.organization>handryocasali</sonar.organization>
     </properties>
     <dependencies>
         <dependency>
