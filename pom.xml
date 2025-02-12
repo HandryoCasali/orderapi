@@ -144,6 +144,11 @@
                         <groupId>org.jacoco</groupId>
                         <artifactId>jacoco-maven-plugin</artifactId>
                         <version>0.8.8</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>br/com/postech/techchallenge/orderapi/infrastructure/**</exclude>
+                            </excludes>
+                        </configuration>
                         <executions>
                             <execution>
                                 <id>prepare-agent</id>
@@ -160,9 +165,6 @@
                                     <formats>
                                         <format>XML</format>
                                     </formats>
-                                    <excludes>
-                                        <exclude>br/com/postech/techchallenge/orderapi/infrastructure/**</exclude>
-                                    </excludes>
                                 </configuration>
                             </execution>
                         </executions>
