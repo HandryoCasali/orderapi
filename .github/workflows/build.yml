@@ -34,5 +34,6 @@ jobs:
           mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
           -Pcoverage \
           -Dsonar.token=$SONAR_TOKEN \
-          -Dsonar.projectProperties=sonar.properties \
+          -Dsonar.projectProperties=src/main/resources/sonar.properties \
+          -Dsonar.qualitygate.wait=true \
           -Dactive.profile=test
